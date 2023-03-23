@@ -1,7 +1,7 @@
 
 <div align="center">
   <h2><b>Tableau to Thoughtspot</b></h2>
-
+  ![](./ThoughtSpot_logo_2019.png)
   <i>a Command Line Tool to convert tableau data source objects to </i> <b>ThoughtSpot</b> <i>Modeling Language (TML) files programmatically</i>
 
   <h3>
