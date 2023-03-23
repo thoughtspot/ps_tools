@@ -39,30 +39,32 @@ pip install -e .
 
 The following commands are available in the current beta version:
 
-```python
-# worksheet_remapping.py
-from thoughtspot_tml import Worksheet
-import argparse
-import pathlib
-
-```
 
 ```shell
 >>> tableau_tools convert_files --help
 
-usage: [--help] [-s SRC] [-d DST] convert_files
+usage: [--help]  convert_files
 
 positional arguments:
   None         
 
 options:
   -h, --help                show this help message and exit
-  -s SRC, --src-prefix SRC  (default: DEV_)
-  -d DST, --dst-prefix DST  (default: TEST_)
 ```
-## CLI preview
-=== "migrate_answers --help"
-  ![Create Spotapps](./docs/assets/create_spotapps.png)
+![Convert_Files](./docs/assets/convert_files.png)
+```shell
+>>> tableau_tools create_spotapps --help
+
+usage: [--help] [--type tds/twb]  create_spotapps
+
+positional arguments:
+  None         
+
+options:
+  -h, --help                show this help message and exit
+  --type                    choose either tds or twb file type
+```
+![Create Spotapps](./docs/assets/create_spotapps.png)
 ## Reference
 
 ## Notes
