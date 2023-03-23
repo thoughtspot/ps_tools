@@ -67,4 +67,26 @@ options:
 ![Create Spotapps](./docs/assets/create_spotapps.png)
 ## Output
 
+=== ":fontawesome-brands-windows: Windows"
+
+    Open up __Windows Terminal__ or __Powershell__.
+
+    ```powershell
+    # Navigate to the Downloads directory
+    cd $env:USERPROFILE/Downloads
+
+    # Unzip the CS Tools bootstrapper
+    Remove-Item -Recurse -Force cs_tools-boot* -ErrorAction Ignore
+    Expand-Archive windows-cs_tools-* -DestinationPath cs_tools-bootstrapper
+
+    # Navigate into the unzipped directory
+    cd cs_tools-bootstrapper
+
+    # Run the help command to see the CLI
+    python bootstrap -h
+
+    # Run the installer
+    python bootstrap --reinstall
+    ```
+
 ## Notes
