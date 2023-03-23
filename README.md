@@ -1,4 +1,4 @@
-![Logo](ThoughtSpot_logo_2019.png)
+![Logo](./docs/assets/ThoughtSpot_logo_2019.png)
 <div align="center">
   <h2><b>Tableau to Thoughtspot</b></h2>
  
@@ -65,6 +65,8 @@ options:
   --type                    choose either tds or twb file type
 ```
 ![Create Spotapps](./docs/assets/create_spotapps.png)
+## Troubleshooting
+
 ## Output
 
 
