@@ -61,7 +61,7 @@ options:
   -d DST, --dst-prefix DST  (default: TEST_)
 ```
 
-
+![Create Spotapps](./docs/assets/create_spotapps.png)
 ## Reference
 
 ## Notes
