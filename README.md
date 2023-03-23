@@ -11,7 +11,7 @@
     <span> | </span>
     <a href="#migration-to-v200">🚨 Troubleshooting</a>
     <span> | </span>
-    <a href="#output">Output</a>
+    <a href="#output">📗 Output</a>
     <span> | </span>
     <a href="#notes-on-thoughtspot-modeling-language">📝 Notes</a>
   </h3>
