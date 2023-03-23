@@ -1,8 +1,3 @@
-# tableau_to_thoughtspot
-Command Line Tool to convert tableau data source objects to ThoughtSpot TML language
-
-
-
 
 <div align="center">
   <h2><b>Tableau to Thoughtspot</b></h2>
@@ -26,15 +21,18 @@ Command Line Tool to convert tableau data source objects to ThoughtSpot TML lang
 
 *This package will not perform validation of the constructed TML files or interact with your* __ThoughtSpot__ *cluster!*
 
-Please leverage the [__ThoughtSpot__ REST API][rest-api] for this purpose.
 
 ## Installation
 
-`thoughtspot_tml` requires at least __Python 3.7__, *preferably* __Python 3.9__ and above.
+`tableau_tools` requires at least __Python 3.7__, *preferably* __Python 3.9__ and above.
 
 __Installation is as simple as:__
 ```shell
-pip install thoughtspot-tml
+#Download the zip file from Github
+#Create a virtual environment
+python -m venv ts2tab
+source ts2tab/bin/activate
+pip install -e . 
 ```
 
 ## Features
