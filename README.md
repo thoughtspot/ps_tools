@@ -60,8 +60,9 @@ options:
   -s SRC, --src-prefix SRC  (default: DEV_)
   -d DST, --dst-prefix DST  (default: TEST_)
 ```
-
-![Create Spotapps](./docs/assets/create_spotapps.png)
+## CLI preview
+=== "migrate_answers --help"
+  ![Create Spotapps](./docs/assets/create_spotapps.png)
 ## Reference
 
 ## Notes
