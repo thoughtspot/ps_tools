@@ -16,7 +16,7 @@
     <a href="#notes-on-thoughtspot-modeling-language">📝 Notes</a>
   </h3>
 
-🚨 __If your examples or scripts are built on__ `thoughtspot_tml==1.3.0`__, see our [Migration to v2.0.0](#migration-to-v200) guide__. 🚨
+🚨 __The tools are built on[thougthspot_tml v2.0.0](#migration-to-v200)__. 🚨
 </div>
 
 *This package will not perform validation of the constructed TML files or interact with your* __ThoughtSpot__ *cluster!*
