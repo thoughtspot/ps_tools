@@ -11,12 +11,12 @@
     <span> | </span>
     <a href="#migration-to-v200">🚨 Troubleshooting</a>
     <span> | </span>
-    <a href="#reference">Reference</a>
+    <a href="#output">Output</a>
     <span> | </span>
     <a href="#notes-on-thoughtspot-modeling-language">📝 Notes</a>
   </h3>
 
-🚨 __The tools are built on[thougthspot_tml v2.0.0](#migration-to-v200)__. 🚨
+🚨 __The tools are built on [thougthspot_tml v2.0.0](#migration-to-v200)__. 🚨
 </div>
 
 *This package will not perform validation of the constructed TML files or interact with your* __ThoughtSpot__ *cluster!*
@@ -65,6 +65,6 @@ options:
   --type                    choose either tds or twb file type
 ```
 ![Create Spotapps](./docs/assets/create_spotapps.png)
-## Reference
+## Output
 
 ## Notes
