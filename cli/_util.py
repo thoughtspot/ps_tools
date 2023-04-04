@@ -1,6 +1,5 @@
 from typing import Any, Optional
 
-
 class State:
     """
     An object that can be used to store arbitrary state.

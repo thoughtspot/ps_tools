@@ -1,4 +1,3 @@
-#%%
 import pandas as pd
 import numpy as np
 import xmltodict, json
@@ -12,7 +11,7 @@ from thoughtspot_tml import Table
 import json
 import re
 from datetime import date
-#%%
+
 def connectiondetails(con):
     connectiondetails=con
     df1=pd.json_normalize(connectiondetails)
@@ -59,7 +58,7 @@ def connectiondetails(con):
             udfs.at[index, 'connection'] = 'sqlproxy'    
     connections = udfs[["authentication","class","db","schema","server","username","warehouse","connection","directory"]]
     return connections
-#%%
+
 def datasourcedetails(dsd):
     datasourcedetails=dsd
     df1=pd.json_normalize(datasourcedetails)
@@ -91,7 +90,7 @@ def datasourcedetails(dsd):
             udfs.at[index, 'connection'] = 'sqlproxy' 
     datasources = udfs[["connection","name","table","dstype"]]
     return datasources
-#%%
+
 def tablemappingdetails(tblmap):
     tablemappingdetails=tblmap
     try:
@@ -152,7 +151,7 @@ def tablemappingdetails(tblmap):
         or2 = df[["name", "tableobject"]]
         objectrelations = pd.concat([or1, or2], ignore_index=True)
         return objectrelations
-#%%
+
 def metadetails(mtd):
     metadetails=mtd
     df1=pd.json_normalize(metadetails)
@@ -189,7 +188,7 @@ def metadetails(mtd):
     #metadata=metadata.dropna(subset=['tableobject'])
     #metadata.to_csv(os.path.join(tabfiledata,r'metadata.csv') )
     return metadata
-#%%
+
 def tabledetails(tbl):
     tabledetails=tbl
     df = pd.json_normalize(tabledetails)
@@ -210,7 +209,7 @@ def tabledetails(tbl):
     tables = df[["db_table", "datatype", "tableobject"]]
     #tables.to_csv(os.path.join(tabfiledata,r'tables.csv') )
     return tables
-#%%
+
 def desttabledetails(destbl):
     desttabledetails=destbl
     df = pd.json_normalize(desttabledetails)
@@ -231,7 +230,7 @@ def desttabledetails(destbl):
     destinationtables = df[["destination","destinationname"]]
     #tables.to_csv(os.path.join(tabfiledata,r'tables.csv') )
     return destinationtables
-#%%
+
 def relationshipdetails(rel):
     relationshipdetails=rel
     try:
@@ -298,7 +297,7 @@ def relationshipdetails(rel):
             else:
                 relationships.at[index,'type']='UNKNOWN'
         return relationships
-#%%
+
 def remap_expression(x):
     operations = ['add_months', 'add_years', 'diff_months', 'date_trunc']
     for operation in operations:
@@ -361,10 +360,3 @@ def formuladetails(fml):
         return formulas
     except: pass
     return formulas
-
-#%% #ANSWERS
-
-
-#%%
-#LIVEBOARDS
-print('success')

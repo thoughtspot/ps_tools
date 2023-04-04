@@ -159,7 +159,7 @@ def create_spotapp(tds_file_name):
             pass
         #tmldict['table']['joins_with'][0]['is_one_to_one'] = False
             
-        ## TEST ENDE
+        ## TEST END
         console.print("TABLE: "+ tmldict['table']['name'],style ='main')
         c = b.loc[(b['db_table'] == a['db_table'].iloc[table])]
         print("Number of columns: "+str(len(c)))

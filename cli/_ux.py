@@ -1,9 +1,7 @@
 import logging
 from pathlib import Path
-
 from rich.console import Console
 from rich.style import Style
-
 from rich.theme import Theme
 from rich.logging import RichHandler
 import pandas as pd
@@ -23,7 +21,6 @@ console = Console(
         "success": "bold green",
         "repr.ellipsis": "medium_purple1"}),
 )
-
 
 def output_message(msg, msg_style="debug"):
     EMOJIS = {
@@ -58,10 +55,6 @@ def output_message(msg, msg_style="debug"):
 
     if msg_style == 'critical':
         sys.exit()
-
-
-
-
 
 def comment(df: pd.DataFrame, *, msg: str, level: str = "INFO", **extra) -> pd.DataFrame:
     """

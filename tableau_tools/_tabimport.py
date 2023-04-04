@@ -1,20 +1,16 @@
 from ._tabimpclient import *
 def parse_tableau(filename):
     filecount = 0
-    #%% ### TDS Files
-#tds_directory = '../test/'
     tds_directory = './input/tds/'
 #for filename in os.listdir(tds_directory):
     if filename.endswith(".tds"): #".tds"=default
         filecount += 1
         fileid = 'tdsid'+str(filecount)
-        #new_row = pd.DataFrame({"filename": [filename], "filecount": [filecount], "fileid": [fileid]})
-        #summary = pd.concat([summary, new_row], ignore_index=True)
         print(os.path.join(tds_directory, filename))
         tabfile = os.path.join(tds_directory, filename)
         with open(tabfile, 'r') as myfile:
             obj = xmltodict.parse(myfile.read())
-        
+
         try:
             con = obj['datasource'][1]['connection']['named-connections']['named-connection']
         except: pass
@@ -173,13 +169,11 @@ def parse_tableau(filename):
     if filename.endswith(".twb"): #".twb"=default
         filecount += 1
         fileid = 'twbid'+str(filecount)
-        #new_row = pd.DataFrame({"filename": [filename], "filecount": [filecount], "fileid": [fileid]})
-        #summary = pd.concat([summary, new_row], ignore_index=True)
         print(os.path.join(twb_directory, filename))
         tabfile = os.path.join(twb_directory, filename)
         with open(tabfile, 'r') as myfile:
             obj = xmltodict.parse(myfile.read())
-
+        
         try:
             con = obj['workbook']['datasources']['datasource'][1]['connection']['named-connections']['named-connection']
         except: pass
@@ -340,5 +334,3 @@ def parse_tableau(filename):
             details = pd.DataFrame(columns=["filename", "filecount","fileid","db_table","db","schema","connection"])
             new_details = pd.DataFrame({"filename": [filename], "filecount": [filecount], "fileid": [fileid], "db_table": [db_table], "db": [db], "schema": [schema], "connection": [connection]})
             details = pd.concat([details, new_details], ignore_index=True)
-    #return new_row
-    #return new_details

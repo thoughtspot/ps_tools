@@ -30,7 +30,6 @@ from rich.progress import track
 from rich.table import Table as tbl
 from rich.progress import Progress
 
-
 path = os.getcwd()
 par_path = os.path.abspath(os.path.join(path, os.pardir))
 
