@@ -1,14 +1,72 @@
-# tableau2ts
-Steps:
-1. Download zip and then unzip the file or pull from git 
-2. Navigate to where the files are such as
-cd documents/tab2ts/tab2ts
-3. Deactivate conda if you have it
-conda deactivate
-4. Run below:
-pip install -e .
-pip install git+https://github.com/thoughtspot/thoughtspot_tml.git@build-spec
-pip install "thoughtspot_tml @ https://github.com/thoughtspot/thoughtspot_tml/archive/v2.0.1.zip"
-pip install thoughtspot_rest_api_v1
-5. Run tableau_tools --help
-6. Run tableau_tools convert_tds
+![Logo](ThoughtSpot_logo_2019.png)
+<div align="center">
+  <h2><b>Tableau to Thoughtspot</b></h2>
+ 
+  <i>a Command Line Tool to convert tableau data source objects to </i> <b>ThoughtSpot</b> <i>Modeling Language (TML) files programmatically</i>
+
+  <h3>
+    <a href="#installation">🛠 Installation</a>
+    <span> | </span>
+    <a href="#features">📎 Features</a>
+    <span> | </span>
+    <a href="#migration-to-v200">🚨 Troubleshooting</a>
+    <span> | </span>
+    <a href="#output">📗 Output</a>
+    <span> | </span>
+    <a href="#notes-on-thoughtspot-modeling-language">📝 Notes</a>
+  </h3>
+
+🚨 __The tools are built on [thougthspot_tml v2.0.0](#migration-to-v200)__. 🚨
+</div>
+
+*This package will not perform validation of the constructed TML files or interact with your* __ThoughtSpot__ *cluster!*
+
+
+## Installation
+
+`tableau_tools` requires at least __Python 3.7__, *preferably* __Python 3.9__ and above.
+
+__Installation is as simple as:__
+```shell
+#Download the zip file from Github
+#Create a virtual environment
+python -m venv ts2tab
+source ts2tab/bin/activate
+pip install -e . 
+```
+
+## Features
+
+The following commands are available in the current beta version:
+
+
+```shell
+>>> tableau_tools convert_files --help
+
+usage: [--help]  convert_files
+
+positional arguments:
+  None         
+
+options:
+  -h, --help                show this help message and exit
+```
+![Convert_Files](./docs/assets/convert_files.png)
+```shell
+>>> tableau_tools create_spotapps --help
+
+usage: [--help] [--type tds/twb]  create_spotapps
+
+positional arguments:
+  None         
+
+options:
+  -h, --help                show this help message and exit
+  --type                    choose either tds or twb file type
+```
+![Create Spotapps](./docs/assets/create_spotapps.png)
+## Output
+
+
+
+## Notes
