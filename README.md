@@ -1,4 +1,4 @@
-![Logo](ThoughtSpot_logo_2019.png)
+![Logo](./docs/assets/ThoughtSpot_logo_2019.png)
 <div align="center">
   <h2><b>Tableau to Thoughtspot</b></h2>
  
@@ -51,7 +51,7 @@ positional arguments:
 options:
   -h, --help                show this help message and exit
 ```
-![Convert_Files](./docs/assets/convert_files.png)
+![Create Spotapps](./docs/assets/create_spotapps.png)
 ```shell
 >>> tableau_tools create_spotapps --help
 
