@@ -1,0 +1,51 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry]
+name = "tableau_tools"
+version = "1.0.0"
+description = "tableau tools"
+authors = ["Jens Englert <jens.englert@thoughtspot.com>"]
+license = "Proprietary"
+include = [
+    { path = "cli" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+rich = "^12.5.1"
+typer = "^0.6.1"
+httpx = "^0.23.0"
+pandas = "^1.5.0"
+toml = "^0.10.2"
+pytz = "^2022.4"
+ruamel-yaml = "^0.17.21"
+xmltodict = "^0.13.0"
+#thoughtspot_tml = "^2.0.0"
+#snowflake-connector-python = "^2.9.0"
+#urllib = "^1.26.13"
+
+[tool.poetry.dev-dependencies]
+nox-poetry = "^1.0.1"
+ward = "^0.66.1-beta.0"
+black = "^22.8.0"
+mkdocs-material = "^8.5.3"
+jupyterlab = "^3.4.7"
+
+[tool.poetry.scripts]
+tableau_tools = "cli.__main__:main"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^5.0.4"
+autopep8 = "^2.0.0"
+
+[tool.black]
+line-length = 120
+force-exclude = '''
+(
+      pyproject\.toml
+    | poetry\.lock
+)
+'''

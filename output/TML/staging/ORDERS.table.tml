@@ -1,0 +1,82 @@
+guid: 5d3cc252-0ee7-f8fe-5232-85027feed759
+table:
+  name: ORDERS
+  db: SNOWFLAKE_SAMPLE_DATA
+  schema: TPCH_SF1
+  db_table: ORDERS
+  connection:
+    name: SF Trial
+  columns:
+  - properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_ORDERKEY
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_CUSTKEY
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_SHIPPRIORITY
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_ORDERSTATUS
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_ORDERPRIORITY
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_CLERK
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_COMMENT
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_TOTALPRICE
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  joins_with:
+  - name: ORDERS_CUSTOMER
+    destination:
+      name: CUSTOMER
+    "on": "[ORDERS::O_CUSTKEY] = [CUSTOMER::C_CUSTKEY]"
+    type: INNER
+  - name: ORDERS_LINEITEM
+    destination:
+      name: LINEITEM
+    "on": "[ORDERS::O_ORDERKEY] = [LINEITEM::L_ORDERKEY]"
+    type: INNER

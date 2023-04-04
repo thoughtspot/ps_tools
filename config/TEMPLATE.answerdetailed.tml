@@ -1,0 +1,29 @@
+guid: 
+answer:
+  name: 
+  tables:
+  - id: 
+    name: 
+  search_query: ""
+  answer_columns:
+  - name: 
+  table:
+    table_columns:
+    - column_id: 
+      show_headline: 
+    ordered_column_ids:
+    - 
+    client_state: ""
+    client_state_v2: ""
+  chart:
+    type: COLUMN
+    chart_columns:
+    - column_id: 
+    axis_configs:
+    - x:
+      - 
+      "y":
+      - 
+    client_state: ""
+    client_state_v2: ""
+  display_mode: TABLE_MODE

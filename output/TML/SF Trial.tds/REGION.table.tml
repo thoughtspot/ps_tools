@@ -1,0 +1,33 @@
+guid: 6df58044-83b8-9066-84f2-2e561fb6c5cf
+table:
+  name: REGION
+  db: SNOWFLAKE_SAMPLE_DATA
+  schema: TPCH_SF1
+  db_table: REGION
+  connection:
+    name: SF Trial
+  columns:
+  - name: R_REGIONKEY
+    db_column_name: R_REGIONKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: R_NAME
+    db_column_name: R_NAME
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: COUNT
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - name: R_COMMENT
+    db_column_name: R_COMMENT
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: COUNT
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR

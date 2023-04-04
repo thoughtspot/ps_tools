@@ -1,0 +1,24 @@
+guid: 
+table:
+  name: 
+  description: 
+  db: 
+  schema: 
+  db_table: 
+  connection:
+    name: 
+  columns:
+  - name: 
+    db_column_name: 
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  joins_with:
+  - name: 
+    destination:
+      name: 
+    "on": 
+    type: 

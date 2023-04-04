@@ -1,0 +1,172 @@
+Tab_map,TS_map,Validate,Ordering for DF,Remap Needed
+[__tableau_internal_object_id__].,~,Yes,1,Yes
+"DATEADD('day',",add_days(,Yes,1,Yes
+"DATEADD('dayofyear',",""" """,NF,1,Yes
+"DATEADD('hour',",""" """,NF,1,Yes
+"DATEADD('iso-quarter',",""" """,NF,1,Yes
+"DATEADD('iso-week',",""" """,NF,1,Yes
+"DATEADD('iso-weekday',",""" """,NF,1,Yes
+"DATEADD('iso-year',",""" """,NF,1,Yes
+"DATEADD('minute',",add_minutes(,Yes,1,Yes
+"DATEADD('month',",add_months(,Yes,1,Yes
+"DATEADD('quarter',",""" """,NF,1,Yes
+"DATEADD('second',",add_seconds(,Yes,1,Yes
+"DATEADD('week',",add_weeks(,Yes,1,Yes
+"DATEADD('weekday',",""" """,NF,1,Yes
+"DATEADD('year',",add_years(,Yes,1,Yes
+"DATEADD(""month"",",add_months(,Yes,1,Yes
+"DATEDIFF('day',",diff_days(,Yes,1,Yes
+"DATEDIFF('dayofyear',",""" """,NF,1,Yes
+"DATEDIFF('hour',",diff_hours(,Yes,1,Yes
+"DATEDIFF('iso-quarter',",""" """,NF,1,Yes
+"DATEDIFF('iso-week',",""" """,NF,1,Yes
+"DATEDIFF('iso-weekday',",""" """,NF,1,Yes
+"DATEDIFF('iso-year',",""" """,NF,1,Yes
+"DATEDIFF('minute',",diff_minutes(,Yes,1,Yes
+"DATEDIFF('month',",diff_months(,Yes,1,Yes
+"DATEDIFF('quarter',",diff_quarters(,Yes,1,Yes
+"DATEDIFF('second',",""" """,NF,1,Yes
+"DATEDIFF('week',",diff_weeks(,Yes,1,Yes
+"DATEDIFF('weekday',",""" """,NF,1,Yes
+"DATEDIFF('year',",diff_years(,Yes,1,Yes
+"DATEDIFF(""month"",",diff_months(,Yes,1,Yes
+"DATENAME('day',",day(,Yes,1,Yes
+"DATENAME('dayofyear',",day_number_of_year(,Yes,1,Yes
+"DATENAME('hour',",hour_of_day(,Yes,1,Yes
+"DATENAME('iso-quarter',",""" """,NF,1,Yes
+"DATENAME('iso-week',",""" """,NF,1,Yes
+"DATENAME('iso-weekday',",""" """,NF,1,Yes
+"DATENAME('iso-year',",""" """,NF,1,Yes
+"DATENAME('minute',",""" """,NF,1,Yes
+"DATENAME('month',",month(,Yes,1,Yes
+"DATENAME('quarter',",quarter_number(,Yes,1,Yes
+"DATENAME('second',",""" """,NF,1,Yes
+"DATENAME('week',",""" """,NF,1,Yes
+"DATENAME('weekday',",day_of_week(,Yes,1,Yes
+"DATENAME('year',",year(,Yes,1,Yes
+",'sunday'",~,Yes,1,Yes
+",'monday'",~,Yes,1,Yes
+",'tuesday'",~,Yes,1,Yes
+",'wednesday'",~,Yes,1,Yes
+",'thursday'",~,Yes,1,Yes
+",'friday'",~,Yes,1,Yes
+",'saturday'",~,Yes,1,Yes
+ELSEIF,else if(,Yes,1,Yes
+ELSEIF(,else if(,Yes,1,Yes
+ENDSWITH(,""" """,NF,1,Yes
+FINDNTH(,""" """,NF,1,Yes
+IIF(,""" """,NF,1,Yes
+MAKEDATETIME(,""" """,NF,1,Yes
+RUNNING_AVG(,cumulative_average(,Yes,1,Yes
+RUNNING_MAX(,cumulative_max(,Yes,1,Yes
+RUNNING_MIN(,cumulative_min(,Yes,1,Yes
+RUNNING_SUM(,cumulative_sum(,Yes,1,Yes
+COVARP( ,""" """,NF,2,Yes
+(MID(,""" """,NF,3,Yes
+AREA(,""" """,NF,3,Yes
+ASCII(,""" """,NF,3,Yes
+ATTR(,""" """,NF,3,Yes
+AVG(,average(,Yes,3,Yes
+BUFFER(,""" """,NF,3,Yes
+CEILING(,ceil(,Yes,3,Yes
+CHAR(,""" """,NF,3,Yes
+COLLECT(,""" """,NF,3,Yes
+CORR( ,""" """,NF,3,Yes
+COT(,""" """,NF,3,Yes
+COUNTD(,unique count(,Yes,3,Yes
+COVAR( ,""" """,NF,3,Yes
+DEGREES(,""" """,NF,3,Yes
+DISTANCE(,""" """,NF,3,Yes
+DIV(,safe_divide(,Yes,3,Yes
+END,~,Yes,3,Yes
+FIND(,""" """,NF,3,Yes
+FIRST( ,""" """,NF,3,Yes
+FULLNAME( ,""" """,NF,3,Yes
+HEXBINX( ,""" """,NF,3,Yes
+HEXBINY( ,""" """,NF,3,Yes
+IF,if(,Yes,3,Yes
+INDEX( ,""" """,NF,3,Yes
+ISDATE(,""" """,NF,3,Yes
+ISFULLNAME(,""" """,NF,3,Yes
+ISMEMBEROF(,""" """,NF,3,Yes
+ISOQUARTER (date,""" """,NF,3,Yes
+ISOWEEK (date,""" """,NF,3,Yes
+ISOWEEKDAY (date,""" """,NF,3,Yes
+ISOYEAR (date,""" """,NF,3,Yes
+ISUSERNAME(,""" """,NF,3,Yes
+LAST( ,""" """,NF,3,Yes
+LEN(,""" """,NF,3,Yes
+LOG(,log10(,Yes,3,Yes
+LOOKUP(,""" """,NF,3,Yes
+LOWER(,"sql_string_op ( \""LOWER ( {0} )\"" ,",Yes,3,Yes
+LTRIM(,"sql_string_op ( \""LTRIM ( {0} )\"" ,",Yes,3,Yes
+MAKEDATE(,""" """,NF,3,Yes
+MAKELINE(,""" """,NF,3,Yes
+MAKEPOINT(,""" """,NF,3,Yes
+MAKETIME(,""" """,NF,3,Yes
+MAX(,max(,Yes,3,Yes
+MIN(,min(,Yes,3,Yes
+MODEL_EXTENSION_ (,""" """,NF,3,Yes
+MODEL_EXTENSION_BOOL (,""" """,NF,3,Yes
+MODEL_EXTENSION_INT (,""" """,NF,3,Yes
+MODEL_EXTENSION_REAL (,""" """,NF,3,Yes
+MODEL_PERCENTILE(,""" """,NF,3,Yes
+MODEL_QUANTILE(,""" """,NF,3,Yes
+PERCENTILE(,percentile(,Yes,3,Yes
+PI( ,""" """,NF,3,Yes
+POWER(,pow(,Yes,3,Yes
+PREVIOUS_VALUE(,""" """,NF,3,Yes
+QUARTER(,quarter_number(,Yes,3,Yes
+RADIANS(,""" """,NF,3,Yes
+RANK_DENSE(,""" """,NF,3,Yes
+RANK_MODIFIED(,""" """,NF,3,Yes
+RANK_UNIQUE(,""" """,NF,3,Yes
+RAWSQL_BOOL(,""" """,NF,3,Yes
+RAWSQL_DATE(,""" """,NF,3,Yes
+RAWSQL_DATETIME(,""" """,NF,3,Yes
+RAWSQL_INT(,""" """,NF,3,Yes
+RAWSQL_REAL(,""" """,NF,3,Yes
+RAWSQL_SPATIAL,""" """,NF,3,Yes
+RAWSQL_STR(,""" """,NF,3,Yes
+RAWSQLAGG_BOOL(,""" """,NF,3,Yes
+RAWSQLAGG_DATE(,""" """,NF,3,Yes
+RAWSQLAGG_DATETIME(,""" """,NF,3,Yes
+RAWSQLAGG_INT(,""" """,NF,3,Yes
+RAWSQLAGG_REAL(,""" """,NF,3,Yes
+RAWSQLAGG_STR(,""" """,NF,3,Yes
+REPLACE(,""" """,NF,3,Yes
+RTRIM(,"sql_string_op ( \""RTRIM ( {0} )\"" ,",Yes,3,Yes
+RUNNING_COUNT(,""" """,NF,3,Yes
+SCRIPT_BOOL,""" """,NF,3,Yes
+SCRIPT_INT,""" """,NF,3,Yes
+SCRIPT_REAL,""" """,NF,3,Yes
+SCRIPT_STR,""" """,NF,3,Yes
+SIZE(,""" """,NF,3,Yes
+SPACE(,""" """,NF,3,Yes
+SPLIT(,""" """,NF,3,Yes
+SQUARE(,sq(,Yes,3,Yes
+STARTSWITH(,""" """,NF,3,Yes
+then,) then,Yes,3,Yes
+THEN,) then,Yes,3,Yes
+TODAY(,today(,Yes,3,Yes
+TOTAL(,""" """,NF,3,Yes
+TRIM(,"sql_string_op ( \""TRIM ( {0} )\"" ,",Yes,3,Yes
+UPPER(,"sql_int_op ( \""UPPER ( {0} )\"" ,",Yes,3,Yes
+USERDOMAIN(,""" """,NF,3,Yes
+USERNAME( ,""" """,NF,3,Yes
+VARP(,""" """,NF,3,Yes
+WEEK(,week_number_of_year(,Yes,3,Yes
+WINDOW_AVG(,""" """,NF,3,Yes
+WINDOW_CORR(,""" """,NF,3,Yes
+WINDOW_COUNT(,""" """,NF,3,Yes
+WINDOW_COVAR(,""" """,NF,3,Yes
+WINDOW_COVARP(,""" """,NF,3,Yes
+WINDOW_MAX(,""" """,NF,3,Yes
+WINDOW_MEDIAN(,""" """,NF,3,Yes
+WINDOW_MIN(,""" """,NF,3,Yes
+WINDOW_PERCENTILE(,""" """,NF,3,Yes
+WINDOW_STDEV(,""" """,NF,3,Yes
+WINDOW_STDEVP(,""" """,NF,3,Yes
+WINDOW_SUM(,""" """,NF,3,Yes
+WINDOW_VAR(,""" """,NF,3,Yes
+ZN(,""" """,NF,3,Yes

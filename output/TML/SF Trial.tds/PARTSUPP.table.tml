@@ -1,0 +1,49 @@
+guid: 624b323a-1fd4-913f-36a9-080dc1607c23
+table:
+  name: PARTSUPP
+  db: SNOWFLAKE_SAMPLE_DATA
+  schema: TPCH_SF1
+  db_table: PARTSUPP
+  connection:
+    name: SF Trial
+  columns:
+  - name: PS_PARTKEY
+    db_column_name: PS_PARTKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PS_SUPPKEY
+    db_column_name: PS_SUPPKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PS_AVAILQTY
+    db_column_name: PS_AVAILQTY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PS_COMMENT
+    db_column_name: PS_COMMENT
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: COUNT
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PS_SUPPLYCOST
+    db_column_name: PS_SUPPLYCOST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
