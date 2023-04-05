@@ -68,28 +68,28 @@ def parse_tableau(filename):
 
         try:
             connections = connectiondetails(con)
-        except: pass #print('Chaos1')
+        except: pass 
         try:
             datasources = datasourcedetails(dsd)
-        except: pass #print('Chaos2')
+        except: pass
         try:
             objectrelations=tablemappingdetails(tblmap)
-        except: pass #print('Chaos3')
+        except: pass
         try:
             metadata = metadetails(mtd)
-        except: pass #print('Chaos4')
+        except: pass
         try:
             tables = tabledetails(tbl)
-        except: pass #print('Chaos5')
+        except: pass
         try:
             destinationtables = desttabledetails(destbl)
-        except: pass #print('Chaos6')
+        except: pass
         try:
             relationships = relationshipdetails(rel)
-        except: pass #print('Chaos7')
+        except: pass
         try:
             formulas = formuladetails(fml)
-        except: pass #print('Chaos8')
+        except: pass
 
         try:    
             connectionsources = connections.merge(datasources, on='connection', validate='1:m')
@@ -98,10 +98,10 @@ def parse_tableau(filename):
             connectionsources = connections.merge(datasources, on='connection', validate='m:m')
         except: pass
         try:
-            connectionobjects= connectionsources.merge(objectrelations, on='name', validate='1:m')
+            connectionobjects= connectionsources.merge(objectrelations, on='name', how='right', validate='1:m')
         except: pass
         try:
-            connectionobjects= connectionsources.merge(objectrelations, on='name', validate='m:m')
+            connectionobjects= connectionsources.merge(objectrelations, on='name', how='right', validate='m:m')
         except: pass
         connectionobjectsmeta = connectionobjects.merge(metadata, on='tableobject', validate='1:m')
         tablesmetadata = metadata.merge(tables, on='tableobject', validate='m:1')
@@ -163,7 +163,7 @@ def parse_tableau(filename):
             new_details = pd.DataFrame({"filename": [filename], "filecount": [filecount], "fileid": [fileid], "db_table": [db_table], "db": [db], "schema": [schema], "connection": [connection]})
             details = pd.concat([details, new_details], ignore_index=True)
 
-    #%% ### TWB files
+#%% ### TWB files
     twb_directory = './input/twb/'
 #for filename in os.listdir(twb_directory):
     if filename.endswith(".twb"): #".twb"=default
@@ -234,28 +234,28 @@ def parse_tableau(filename):
 
         try:
             connections = connectiondetails(con)
-        except: pass #print('Chaos1')
+        except: pass
         try:
             datasources = datasourcedetails(dsd)
-        except: pass #print('Chaos2')
+        except: pass
         try:
             objectrelations=tablemappingdetails(tblmap)
-        except: pass #print('Chaos3')
+        except: pass
         try:
             metadata = metadetails(mtd)
-        except: pass #print('Chaos4')
+        except: pass
         try:
             tables = tabledetails(tbl)
-        except: pass #print('Chaos5')
+        except: pass
         try:
             destinationtables = desttabledetails(destbl)
-        except: pass #print('Chaos6')
+        except: pass
         try:
             relationships = relationshipdetails(rel)
-        except: pass #print('Chaos7')
+        except: pass
         try:
             formulas = formuladetails(fml)
-        except: pass #print('Chaos8')
+        except: pass
 
         try:    
             connectionsources = connections.merge(datasources, on='connection', validate='1:m')
@@ -264,16 +264,15 @@ def parse_tableau(filename):
             connectionsources = connections.merge(datasources, on='connection', validate='m:m')
         except: pass
         try:
-            connectionobjects= connectionsources.merge(objectrelations, on='name', validate='1:m')
+            connectionobjects= connectionsources.merge(objectrelations, on='name', how='right', validate='1:m')
         except: pass
         try:
-            connectionobjects= connectionsources.merge(objectrelations, on='name', validate='m:m')
+            connectionobjects= connectionsources.merge(objectrelations, on='name', how='right', validate='m:m')
         except: pass
         connectionobjectsmeta = connectionobjects.merge(metadata, on='tableobject', validate='1:m')
         tablesmetadata = metadata.merge(tables, on='tableobject', validate='m:1')
 
         connectionstablesmetadata = tablesmetadata.merge(connectionobjects, on='tableobject', validate='m:1')
-
         try:
             df = connectionstablesmetadata[["col_name","db_table"]]
             df = df.copy()
