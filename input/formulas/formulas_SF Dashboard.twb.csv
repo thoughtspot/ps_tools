@@ -1,0 +1,14 @@
+name,datatype,calcid,role,formula,tsyntax,dataitem,addinfo,validate,tsformula,expr,filename,fileid
+!Orders!,integer,[Calculation_2077144631196962995],measure,count([__tableau_internal_object_id__].[ORDERS (TPCH_SF1.ORDERS)_A89E2F1110A54BC099851DC145054EDE]),count,__tableau_internal_object_id__,,Yes,count(~[ORDERS (TPCH_SF1.ORDERS)_A89E2F1110A54BC099851DC145054EDE]),count([ORDERS (TPCH_SF1.ORDERS)_A89E2F1110A54BC099851DC145054EDE]),SF Dashboard.twb,twbid1
+IF AND ELSEIF,string,[Calculation_2077144631197724854],dimension,"IF 
+[R_NAME]='EUROPE' AND [N_NAME] ='UK' THEN 'UK' ELSEIF
+[R_NAME]='EUROPE' AND [N_NAME] ='FRANCE' THEN 'FRANCE' ELSE 'UNKNOWN' END",,,,Yes,"if( 
+[R_NAME]='EUROPE' AND [N_NAME] ='UK' ) then 'UK' else if(
+[R_NAME]='EUROPE' AND [N_NAME] ='FRANCE' ) then 'FRANCE' ELSE 'UNKNOWN' ~","if( 
+[REGION::R_NAME]='EUROPE' AND [NATION::N_NAME] ='UK' ) then 'UK' else if(
+[REGION::R_NAME]='EUROPE' AND [NATION::N_NAME] ='FRANCE' ) then 'FRANCE' ELSE 'UNKNOWN' ",SF Dashboard.twb,twbid1
+AVG,real,[Calculation_2077144631201067200],measure,AVG([O_TOTALPRICE]),AVG,O_TOTALPRICE,,Yes,average([O_TOTALPRICE]),average([ORDERS::O_TOTALPRICE]),SF Dashboard.twb,twbid1
+RUNNING_AVG,real,[Calculation_314055745890283586],measure,RUNNING_AVG([Calculation_2077144631196962995] ),RUNNING_AVG,Calculation_2077144631196962995,,Yes,cumulative_average([Calculation_2077144631196962995] ),cumulative_average([Calculation_2077144631196962995] ),SF Dashboard.twb,twbid1
+DATEADD,datetime,[Calculation_474777957544992772],dimension,"DATEADD('month',1, [O_ORDERDATE] )",DATEADD,O_ORDERDATE,'month',Yes,"add_months(1, [O_ORDERDATE] )","add_months([ORDERS::O_ORDERDATE], 1)",SF Dashboard.twb,twbid1
+DATEDIFF,integer,[Calculation_474777957545385989],measure,"DATEDIFF('month',[O_ORDERDATE],TODAY(),'sunday')",DATEDIFF,O_ORDERDATE,'month',Yes,"diff_months([O_ORDERDATE],today()~)","diff_months([ORDERS::O_ORDERDATE],today())",SF Dashboard.twb,twbid1
+DATETRUNC,datetime,[Calculation_474777957546655755],dimension,"DATETRUNC('month',[O_ORDERDATE] )",DATETRUNC,O_ORDERDATE,'month',No,"DATETRUNC('month',[O_ORDERDATE] )","DATETRUNC('month',[ORDERS::O_ORDERDATE] )",SF Dashboard.twb,twbid1
