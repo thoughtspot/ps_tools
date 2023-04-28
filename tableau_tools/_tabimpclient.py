@@ -312,7 +312,7 @@ def apply_remap_expression(x):
 def formuladetails(fml):
     formuladetails=fml
     try:
-        df = pd.read_csv('config/Tab2TS_formulas.csv')
+        df = pd.read_csv('./config/Tab2TS_formulas.csv')
         mapping_df = df[["Tab_map","TS_map"]]
         validate_df = df[["Tab_map","Validate"]]
         df = pd.json_normalize(formuladetails)
@@ -335,7 +335,6 @@ def formuladetails(fml):
         df = df.reindex(df.columns.union(cols, sort=False), axis=1, fill_value=" ")
         df = df[["name", "datatype", "calcid", "role", "formula","tsyntax","dataitem","addinfo","validate"]]
         df=df.dropna(subset=['formula'])
-        df = df.loc[df['name'].isin(['!Orders!','AVG','IF AND ELSEIF','DATEADD','RUNNING_AVG','DATETRUNC','DATEDIFF','NESTED','NESTEDIF','NESTED_LOOKUP'])]
         df['validate'] = df['formula'].apply(lambda x: 'Yes' if any(val in x for val in mapping_df['Tab_map']) else 'No')
         for i, row in df.iterrows():
             formula = row['formula']
