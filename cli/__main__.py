@@ -25,7 +25,6 @@ from thoughtspot_tml import Worksheet
 import json
 from tableau_tools._client import *
 from tableau_tools._tabimport import *
-#from ._snowflake import *
 from rich.progress import track
 from rich.table import Table as tbl
 from rich.progress import Progress
@@ -69,17 +68,7 @@ def convert_twb(
     console.print(f"check {summary}",style = 'success')
     summary.to_csv('./input/exportinfo/summary.csv',index=False )
         #details.to_csv('./input/exportinfo/details.csv',index=False )
-"""
-@ app.command(name="create_tables")
-def create_tables(
-    ctx: typer.Context,
-    #cfg_name: str = typer.Option(..., help="Name of config file")
-):
-    cs = sf_connect()
-    create_database('CUST','MY_WH','hyperfiles_db','default_schema')
-    cs.close()
-    ctx.close()
-"""
+
 @ app.command(name="create_spotapps")
 def create_spotapps(
     ctx: typer.Context,
@@ -104,8 +93,8 @@ def main():
     try:
         app(prog_name="tableau_tools")
     except Exception as E:
-        output_message("Whoopsie, something went wrong! Check log file for errors", "error")
-        log.exception("whoopsie, something went wrong!")
+        output_message("Something went wrong! Check log file for errors", "error")
+        log.exception("Something went wrong!")
 
 
 if __name__ == "__main__":
