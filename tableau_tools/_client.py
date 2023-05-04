@@ -31,7 +31,7 @@ import json
 from thoughtspot_rest_api_v1 import *
 import requests
 import urllib3
-#import _snowflake
+
 urllib3.disable_warnings()
 par_path = os.getcwd()
 
@@ -47,7 +47,7 @@ def create_spotapp(tds_file_name):
     #tds_file_name = 'SF Trial.tds'
     print(par_path)
 
-#%% LOAD FILES
+# LOAD FILES
     try: 
         con_metadata = pd.read_csv("{}/input/metadata_objects/metadata_{}.csv".format(par_path,tds_file_name))
     except: 
@@ -65,11 +65,6 @@ def create_spotapp(tds_file_name):
     except: 
         pass
 
-    try: 
-        con_answers = pd.read_csv('{}/input/vizes/vizes_{}.csv'.format(par_path,tds_file_name))
-    except: 
-        pass
-
     ##Get tables
 
     a=con_metadata[['db','schema','warehouse','db_table']].drop_duplicates()
@@ -82,13 +77,8 @@ def create_spotapp(tds_file_name):
     try:
         z=con_formulas[['name','expr']].drop_duplicates()
     except: pass
-    
-    ## Get answers
-    # try: y=con_answers[['viztitle','answer_name','answer_columns','column_id']].drop_duplicates()
-    #      x=con_answers[['search_query']].drop_duplicates()
-    # except: pass
 
-    #datatype mapping (WIP)
+    #datatype mapping
 
     datatype_mapping = {'tableau': ['integer', 'date', 'string', 'real'],
                         'TS_data_type': ['INT64', 'DATE', 'VARCHAR', 'DOUBLE']}   
@@ -188,37 +178,6 @@ def create_spotapp(tds_file_name):
         data = ws.dumps(format_type="JSON")
         data_s = json.loads(data)
         import_object = json.dumps(tmldict)
-        """
-        hostname = ''
-        user = ''
-        password = ''
-        ts: TSRestApiV1 = TSRestApiV1(server_url=hostname)
-        ts.requests_session.verify = False
-        
-        try:
-            ts.session_login(username=user, password=password)
-            #print("successfully logged in to "+ hostname)
-        except requests.exceptions.HTTPError as e:
-            print(e)
-            print(e.response.content)
-        try:
-            UploadObject = ts.metadata_tml_import(data_s, create_new_on_server=False, validate_only=True)
-            #print(UploadObject)
-        except Exception as e:
-            #print(e)
-            pass
-        if UploadObject['object'][0]['response']['status']['status_code'] == 'OK':
-            #print("successfully uploaded tml object")
-            console.print("validated tml object successfully", style = "success")
-            #print('New GUID: '+ UploadObject['object'][0]['response']['header']['id_guid'])
-        elif UploadObject['object'][0]['response']['status']['status_code'] == 'WARNING':
-            console.print("Warning "+ UploadObject['object'][0]['response']['status']['error_message'],style= "warning")
-        elif UploadObject['object'][0]['response']['status']['status_code'] == 'ERROR':
-            console.print(UploadObject['object'][0]['response']['status']['error_message'],style='error')
-        ## TEST
-        """
-        
-
         
     #print("_______________________________________________")
     #%% WORKSHEET TMLS
@@ -229,7 +188,7 @@ def create_spotapp(tds_file_name):
     worksheet = worksheet.to_dict()
     
     #General Information
-    worksheet['guid'] = '7ad60c3b-cfea-4dc4-bcad-447ff5eded15'
+    worksheet['guid'] = ''
     worksheet['worksheet']['name'] = a['db'][0]
     worksheet['worksheet']['properties']['is_bypass_rls'] = False
     worksheet['worksheet']['properties']['join_progressive'] = True 
@@ -259,7 +218,7 @@ def create_spotapp(tds_file_name):
         
         worksheet['worksheet']['table_paths'][n]['id'] = a['db_table'].iloc[n] + '_1'
         worksheet['worksheet']['table_paths'][n]['table'] = a['db_table'].iloc[n]
-        
+
         try:
             jp = pd.read_csv("{}/input/join_paths/path_{}.csv".format(par_path,tds_file_name))
             f = jp.loc[(jp['destinationname'] == a['db_table'].iloc[n])]
@@ -267,16 +226,15 @@ def create_spotapp(tds_file_name):
                 #print(f['join_path'].iloc[i])
                 worksheet['worksheet']['table_paths'][n]['join_path'][0]['join'].append(f['path_values'].iloc[i])
             worksheet['worksheet']['table_paths'][n]['join_path'][0]['join'].remove("DEFAULT")
-        
-            for jn in range(len(d)-1):
-                worksheet['worksheet']['joins'].append(join_template)
         except Exception as e: 
             pass
             print(str(e))
-        
-    #%% WORKSHEET - JOINS
-    Worksheet.loads(json.dumps(worksheet)).dump("{}.worksheet.tml".format(a['db'].iloc[0]))          
-    tml=Worksheet.load(path='{}.worksheet.tml'.format(a['db'].iloc[0]))
+
+    for jn in range(len(d)-1):
+        worksheet['worksheet']['joins'].append(join_template)
+
+    Worksheet.loads(json.dumps(worksheet)).dump("{}.worksheet.tml".format(d['db'].iloc[0]))          
+    tml=Worksheet.load(path='{}.worksheet.tml'.format(d['db'].iloc[0]))
     worksheet = tml.to_dict()
 
     for jn in range(len(d)):
@@ -284,10 +242,9 @@ def create_spotapp(tds_file_name):
         worksheet['worksheet']['joins'][jn]['name'] = d['name'].iloc[jn] + '_'+d['destinationname'].iloc[jn]
         worksheet['worksheet']['joins'][jn]['source'] = d['name'].iloc[jn]
         worksheet['worksheet']['joins'][jn]['destination'] = d['destinationname'].iloc[jn]
-        worksheet['worksheet']['joins'][jn]['type'] = 'INNER'
+        worksheet['worksheet']['joins'][jn]['type'] = d['type'].iloc[jn]
         worksheet['worksheet']['joins'][jn]['is_one_to_one'] = False
-
-    #%% WORKSHEET - COLUMNS
+#%% WORKSHEET - COLUMNS
         
     #worksheet['worksheet']['table_paths'][0]['join_path'][0]['join'] = None
     #worksheet['worksheet']['table_paths'][0]['column'] = None
@@ -307,7 +264,7 @@ def create_spotapp(tds_file_name):
         worksheet['worksheet']['worksheet_columns'][column]['properties']['aggregation'] = b['TS_aggr'][column]
         worksheet['worksheet']['worksheet_columns'][column]['properties']['index_type'] = None#'DONT_INDEX'
 
-    #%% WORKSHEET - FORMULAS
+#%% WORKSHEET - FORMULAS
     try:
         for formulas in range(len(z)-1):
             worksheet['worksheet']['formulas'].append(form_template)

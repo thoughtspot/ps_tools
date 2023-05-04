@@ -1,4 +1,4 @@
-guid: 5d07d802-eda5-763e-b09f-91e67330eb1d
+guid: 4ad5dcf9-0075-7af3-00a2-c244a43f1eae
 table:
   name: SUPPLIER
   db: SNOWFLAKE_SAMPLE_DATA

@@ -1,8 +1,8 @@
-guid: 5d3cc252-0ee7-f8fe-5232-85027feed759
+guid: f5998998-7334-e16e-8d1b-0f797be31862
 table:
   name: ORDERS
-  db: SNOWFLAKE_SAMPLE_DATA
-  schema: TPCH_SF1
+  db: NaN
+  schema: NaN
   db_table: ORDERS
   connection:
     name: SF Trial
@@ -13,35 +13,14 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: O_ORDERKEY
+  - db_column_name: Calculation_396316787159064930
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: O_CUSTKEY
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: O_SHIPPRIORITY
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: O_ORDERSTATUS
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: O_ORDERPRIORITY
+  - db_column_name: O_TOTALPRICE
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
@@ -62,7 +41,35 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: O_TOTALPRICE
+  - db_column_name: O_ORDERPRIORITY
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_ORDERSTATUS
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_CUSTKEY
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_ORDERKEY
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: O_SHIPPRIORITY
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
@@ -70,13 +77,8 @@ table:
     db_column_properties:
       data_type: VARCHAR
   joins_with:
-  - name: ORDERS_CUSTOMER
-    destination:
-      name: CUSTOMER
-    "on": "[ORDERS::O_CUSTKEY] = [CUSTOMER::C_CUSTKEY]"
-    type: INNER
   - name: ORDERS_LINEITEM
     destination:
       name: LINEITEM
-    "on": "[ORDERS::O_ORDERKEY] = [LINEITEM::L_ORDERKEY]"
+    "on": "[ORDERS::O_ORDERKEY] = [LINEITEM (SNOWFLAKE_SAMPLE_DATA.LINEITEM)_48AECE09F5D9497D9F7B8F37033D8190::L_ORDERKEY]"
     type: INNER

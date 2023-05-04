@@ -1,4 +1,4 @@
-guid: cb606c72-2880-86eb-1446-c18802978315
+guid: f11cad3d-01e1-15d0-85fd-38230c4e4d87
 table:
   name: NATION
   db: NaN
@@ -7,33 +7,38 @@ table:
   connection:
     name: SF Trial
   columns:
-  - properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: N_COMMENT
+  - name: N_COMMENT
+    db_column_name: N_COMMENT
     properties:
       column_type: ATTRIBUTE
-      aggregation: SUM
+      aggregation: COUNT
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: N_NAME
+  - name: N_NAME
+    db_column_name: N_NAME
     properties:
       column_type: ATTRIBUTE
-      aggregation: SUM
+      aggregation: COUNT
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: N_NATIONKEY
+  - name: N_NATIONKEY
+    db_column_name: N_NATIONKEY
     properties:
-      column_type: ATTRIBUTE
+      column_type: MEASURE
       aggregation: SUM
       index_type: DONT_INDEX
     db_column_properties:
-      data_type: VARCHAR
+      data_type: INT64
+  - name: N_REGIONKEY
+    db_column_name: N_REGIONKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
   joins_with:
   - name: NATION_REGION
     destination:

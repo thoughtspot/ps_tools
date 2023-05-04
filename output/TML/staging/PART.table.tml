@@ -1,8 +1,8 @@
-guid: b24f4912-c63b-bb65-c7c3-6cec1848f9d3
+guid: 74d8f6f7-56d4-8e0e-ca1c-8d17023f8887
 table:
   name: PART
-  db: SNOWFLAKE_SAMPLE_DATA
-  schema: TPCH_SF1
+  db: NaN
+  schema: NaN
   db_table: PART
   connection:
     name: SF Trial
@@ -13,28 +13,7 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: P_PARTKEY
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: P_SIZE
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: P_NAME
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: P_MFGR
+  - db_column_name: P_RETAILPRICE
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
@@ -48,7 +27,7 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: P_TYPE
+  - db_column_name: P_COMMENT
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
@@ -62,7 +41,28 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: P_COMMENT
+  - db_column_name: P_MFGR
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: P_NAME
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: P_TYPE
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: P_PARTKEY
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
@@ -73,5 +73,5 @@ table:
   - name: PART_PARTSUPP
     destination:
       name: PARTSUPP
-    "on": "[PART::P_PARTKEY] = [PARTSUPP::PS_PARTKEY]"
+    "on": "[PART::P_PARTKEY] = [PARTSUPP (SNOWFLAKE_SAMPLE_DATA.PARTSUPP)_6B817DCE0643423D9B2F2A75D5677A4B::PS_PARTKEY]"
     type: INNER
