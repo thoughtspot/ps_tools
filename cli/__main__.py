@@ -23,8 +23,8 @@ from thoughtspot_tml.utils import determine_tml_type
 from thoughtspot_tml import Table
 from thoughtspot_tml import Worksheet
 import json
-from tableau_tools._client import *
-from tableau_tools._tabimport import *
+from ps_tools._client import *
+from ps_tools._tabimport import *
 from rich.progress import track
 from rich.table import Table as tbl
 from rich.progress import Progress
@@ -35,7 +35,7 @@ par_path = os.path.abspath(os.path.join(path, os.pardir))
 log = logging.getLogger(__name__)
 
 app = typer.Typer(
-    help="""tableau tools.""",
+    help="""Welcome to PS Tools!""",
     add_completion=False,
     no_args_is_help=True,
     # global settings
@@ -91,7 +91,7 @@ def main():
     #_load_environment_defaults(context_settings=app.info.context_settings)
 
     try:
-        app(prog_name="tableau_tools")
+        app(prog_name="ps_tools")
     except Exception as E:
         output_message("Something went wrong! Check log file for errors", "error")
         log.exception("Something went wrong!")
