@@ -51,7 +51,7 @@ positional arguments:
 options:
   -h, --help                show this help message and exit
 ```
-![Create Spotapps](./docs/assets/create_spotapps.png)
+![Create Spotapps](./docs/assets/convert_files.png)
 ```shell
 >>> ps_tools create_spotapps --help
 
