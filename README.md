@@ -69,10 +69,10 @@ options:
 ```
 ![Create Spotapps](./docs/assets/create_spotapps.png)
 ## Output
-`ps_tools convert_files` will create a number of CSV outputs which will be located in the input folder directory.
+`ps_tools convert_files` will create a number of CSV files which will be located in the input folder directory.
   ![Create Spotapps](./docs/assets/metadata.png)
 <br />
-`ps_tools create_spotapps --type tds/twb` will create a series of TMLs and Spotapps which will be located in the output folder directory.
+`ps_tools create_spotapps --type tds/twb` will create a number of TMLs and Spotapps files which will be located in the output folder directory.
 <br />
   ![Create Spotapps](./docs/assets/tmls.png)
 <br />
