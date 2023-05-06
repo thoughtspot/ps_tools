@@ -1,5 +1,6 @@
-![Logo](./docs/assets/logo.png)
+
 <div align="center">
+![Logo](./docs/assets/logo.png)
   <h2><b>PS Tools - Tableau to Thoughtspot</b></h2>
  
   <i>a Command Line Tool to convert tableau data source objects to </i> <b>ThoughtSpot</b> <i>Modeling Language (TML) files programmatically</i>
@@ -66,13 +67,18 @@ options:
 ```
 ![Create Spotapps](./docs/assets/create_spotapps.png)
 ## Output
-convert_files will create a number of CSV outputs which will be located in the input folder directory.
-![Create Spotapps](./docs/assets/metadata.png)
+`ps_tools convert_files` will create a number of CSV outputs which will be located in the input folder directory.
+<b>
+  ![Create Spotapps](./docs/assets/metadata.png)
 
-create_spotapps will create a series of TMLs and Spotapps which will be located in the output folder directory.
-![Create Spotapps](./docs/assets/tmls.png)
-![Create Spotapps](./docs/assets/table_tml.png)
-![Create Spotapps](./docs/assets/ws_tml.png)
-![Create Spotapps](./docs/assets/spotapps.png)
+`ps_tools create_spotapps --type tds/twb` will create a series of TMLs and Spotapps which will be located in the output folder directory.
+<b>
+  ![Create Spotapps](./docs/assets/tmls.png)
+<b>
+  ![Create Spotapps](./docs/assets/table_tml.png)
+<b>
+  ![Create Spotapps](./docs/assets/ws_tml.png)
+<b>
+  ![Create Spotapps](./docs/assets/spotapps.png)
 
 ## Notes
