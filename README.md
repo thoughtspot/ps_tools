@@ -24,14 +24,14 @@
 
 ## Installation
 
-`tableau_tools` requires at least __Python 3.7__, *preferably* __Python 3.9__ and above.
+`ps_tools` requires at least __Python 3.7__, *preferably* __Python 3.9__ and above.
 
 __Installation is as simple as:__
 ```shell
 #Download the zip file from Github
 #Create a virtual environment
-python -m venv ts2tab
-source ts2tab/bin/activate
+python -m venv pyenv
+source pyenv/bin/activate
 pip install -e . 
 ```
 
@@ -41,7 +41,7 @@ The following commands are available in the current beta version:
 
 
 ```shell
->>> tableau_tools convert_files --help
+>>> ps_tools convert_files --help
 
 usage: [--help]  convert_files
 
@@ -53,7 +53,7 @@ options:
 ```
 ![Create Spotapps](./docs/assets/create_spotapps.png)
 ```shell
->>> tableau_tools create_spotapps --help
+>>> ps_tools create_spotapps --help
 
 usage: [--help] [--type tds/twb]  create_spotapps
 
