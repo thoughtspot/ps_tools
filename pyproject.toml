@@ -4,9 +4,9 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry]
-name = "tableau_tools"
+name = "ps_tools"
 version = "1.0.0"
-description = "tableau tools"
+description = "ps tools"
 authors = ["Jens Englert <jens.englert@thoughtspot.com>"]
 license = "Proprietary"
 include = [
@@ -23,7 +23,8 @@ toml = "^0.10.2"
 pytz = "^2022.4"
 ruamel-yaml = "^0.17.21"
 xmltodict = "^0.13.0"
-#thoughtspot_tml = "^2.0.0"
+thoughtspot-rest-api-v1 = "^1.2.6"
+thoughtspot-tml = "^2.0.4"
 #snowflake-connector-python = "^2.9.0"
 #urllib = "^1.26.13"
 
@@ -35,7 +36,7 @@ mkdocs-material = "^8.5.3"
 jupyterlab = "^3.4.7"
 
 [tool.poetry.scripts]
-tableau_tools = "cli.__main__:main"
+ps_tools = "cli.__main__:main"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^5.0.4"
