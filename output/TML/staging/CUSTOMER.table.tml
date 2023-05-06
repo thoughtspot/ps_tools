@@ -1,8 +1,8 @@
-guid: e2b77942-726f-0bec-8030-519301e35135
+guid: 366a79d7-20cd-e52a-b261-b7a73c47c1c8
 table:
   name: CUSTOMER
-  db: SNOWFLAKE_SAMPLE_DATA
-  schema: TPCH_SF1
+  db: NaN
+  schema: NaN
   db_table: CUSTOMER
   connection:
     name: SF Trial
@@ -13,21 +13,7 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: C_CUSTKEY
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: C_NATIONKEY
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: C_NAME
+  - db_column_name: C_ACCTBAL
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
@@ -41,7 +27,7 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: C_PHONE
+  - db_column_name: C_COMMENT
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
@@ -55,7 +41,21 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: C_COMMENT
+  - db_column_name: C_NAME
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: C_PHONE
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: C_CUSTKEY
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
@@ -66,5 +66,10 @@ table:
   - name: CUSTOMER_NATION
     destination:
       name: NATION
-    "on": "[CUSTOMER::C_NATIONKEY] = [NATION::N_NATIONKEY]"
+    "on": "[CUSTOMER::C_NATIONKEY] = [NATION (SNOWFLAKE_SAMPLE_DATA.NATION)_FFD2A26E311E49FD87CAB09F88089559::N_NATIONKEY]"
+    type: INNER
+  - name: CUSTOMER_ORDERS
+    destination:
+      name: ORDERS
+    "on": "[CUSTOMER::C_CUSTKEY] = [ORDERS (SNOWFLAKE_SAMPLE_DATA.ORDERS)_08F7D1C30E7B4A22AF1B0499CFB91CB6::O_CUSTKEY]"
     type: INNER

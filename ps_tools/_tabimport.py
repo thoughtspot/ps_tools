@@ -1,3 +1,5 @@
+#%%
+from cli._ux import comment, console, output_message
 from ._tabimpclient import *
 def parse_tableau(filename):
     filecount = 0
@@ -11,6 +13,7 @@ def parse_tableau(filename):
         with open(tabfile, 'r') as myfile:
             obj = xmltodict.parse(myfile.read())
 
+# Parsing through different levels in the xml to find the required information such as connections
         try:
             con = obj['datasource'][1]['connection']['named-connections']['named-connection']
         except: pass
@@ -65,32 +68,48 @@ def parse_tableau(filename):
         try:
             fml = obj['datasource']['column']
         except: pass
-
+# Referencing the functions from the _tabimpclient.py file
         try:
             connections = connectiondetails(con)
-        except: pass 
+        except:
+            output_message('No connections for ' + filename, "error") 
+            pass 
         try:
             datasources = datasourcedetails(dsd)
-        except: pass
+        except:
+            output_message('No datasources for ' + filename, "error")  
+            pass             
         try:
             objectrelations=tablemappingdetails(tblmap)
-        except: pass
+        except: 
+            output_message('No objectrelations for ' + filename, "error") 
+            pass 
         try:
             metadata = metadetails(mtd)
-        except: pass
+        except: 
+            output_message('No metadata for ' + filename, "error") 
+            pass 
         try:
             tables = tabledetails(tbl)
-        except: pass
+        except: 
+            output_message('No tables for ' + filename, "error") 
+            pass 
         try:
             destinationtables = desttabledetails(destbl)
-        except: pass
+        except: 
+            output_message('No destinationtables for ' + filename, "error") 
+            pass 
         try:
             relationships = relationshipdetails(rel)
-        except: pass
+        except: 
+            output_message('No relationships for ' + filename, "error") 
+            pass 
         try:
             formulas = formuladetails(fml)
-        except: pass
-
+        except: 
+            output_message('No formulas for ' + filename, "error") 
+            pass 
+# Joining multiple dataframes together ready for the CSV output
         try:    
             connectionsources = connections.merge(datasources, on='connection', validate='1:m')
         except: pass
@@ -110,7 +129,7 @@ def parse_tableau(filename):
         try:
             df = connectionstablesmetadata[["col_name","db_table"]]
             df = df.copy()
-            df.loc[:, 'tablecolumn'] = df['db_table'] + '::' + df['col_name']
+            df.loc[:, 'tablecolumn'] = df['db_table'] + '_1::' + df['col_name']
             for index, row in df.iterrows():
                 formulas['expr'] = formulas['expr'].str.replace(row['col_name'], row['tablecolumn'])
         except: pass
@@ -132,7 +151,7 @@ def parse_tableau(filename):
             connectionobjectsrelationships['filename']=filename
             connectionobjectsrelationships['fileid']= fileid
             connectionobjectsrelationships.to_csv('./input/relationships/relations_{}.csv'.format(filename),index=False )
-        except: print('There are no relationships for '+ filename)
+        except: output_message('There are no relationships for ' + filename, "error")
 
         try:
             data = connectionobjectsrelationships
@@ -146,13 +165,13 @@ def parse_tableau(filename):
             df_unpivoted.dropna(inplace=True)
             join_paths = df_unpivoted[['destinationname','path_values']] 
             join_paths.to_csv('./input/join_paths/path_{}.csv'.format(filename),index=False)
-        except: print('There are no join paths for '+ filename)
+        except: output_message('There are no join paths for ' + filename, "error")
         try: 
             formulas['filename']=filename
             formulas['fileid']= fileid
             formulas.to_csv('./input/formulas/formulas_{}.csv'.format(filename),index=False )
-        except: print('There are no formulas for '+ filename)
-
+        except: output_message('There are no formulas for ' + filename, "error")
+# Summary CSV output provided to list the various files that have been parsed 
         df = connectionstablesmetadata[["db_table","db","schema","connection","fileid"]].drop_duplicates()
         for index, row in df.iterrows():
             db_table = row['db_table']
@@ -173,7 +192,7 @@ def parse_tableau(filename):
         tabfile = os.path.join(twb_directory, filename)
         with open(tabfile, 'r') as myfile:
             obj = xmltodict.parse(myfile.read())
-        
+# Parsing through different levels in the xml to find the required information such as connections       
         try:
             con = obj['workbook']['datasources']['datasource'][1]['connection']['named-connections']['named-connection']
         except: pass
@@ -231,32 +250,48 @@ def parse_tableau(filename):
         try:
             fml = obj['workbook']['datasources']['datasource']['column']
         except: pass
-
+# Referencing the functions from the _tabimpclient.py file
         try:
             connections = connectiondetails(con)
-        except: pass
+        except:
+            output_message('No connections for ' + filename, "error") 
+            pass 
         try:
             datasources = datasourcedetails(dsd)
-        except: pass
+        except:
+            output_message('No datasources for ' + filename, "error")  
+            pass             
         try:
             objectrelations=tablemappingdetails(tblmap)
-        except: pass
+        except: 
+            output_message('No objectrelations for ' + filename, "error") 
+            pass 
         try:
             metadata = metadetails(mtd)
-        except: pass
+        except: 
+            output_message('No metadata for ' + filename, "error") 
+            pass 
         try:
             tables = tabledetails(tbl)
-        except: pass
+        except: 
+            output_message('No tables for ' + filename, "error") 
+            pass 
         try:
             destinationtables = desttabledetails(destbl)
-        except: pass
+        except: 
+            output_message('No destinationtables for ' + filename, "error") 
+            pass 
         try:
             relationships = relationshipdetails(rel)
-        except: pass
+        except: 
+            output_message('No relationships for ' + filename, "error") 
+            pass 
         try:
             formulas = formuladetails(fml)
-        except: pass
-
+        except: 
+            output_message('No formulas for ' + filename, "error") 
+            pass 
+# Joining multiple dataframes together ready for the CSV output
         try:    
             connectionsources = connections.merge(datasources, on='connection', validate='1:m')
         except: pass
@@ -276,7 +311,7 @@ def parse_tableau(filename):
         try:
             df = connectionstablesmetadata[["col_name","db_table"]]
             df = df.copy()
-            df.loc[:, 'tablecolumn'] = df['db_table'] + '::' + df['col_name']
+            df.loc[:, 'tablecolumn'] = df['db_table'] + '_1::' + df['col_name']
             for index, row in df.iterrows():
                 formulas['expr'] = formulas['expr'].str.replace(row['col_name'], row['tablecolumn'])
         except: pass
@@ -298,7 +333,7 @@ def parse_tableau(filename):
             connectionobjectsrelationships['filename']=filename
             connectionobjectsrelationships['fileid']= fileid
             connectionobjectsrelationships.to_csv('./input/relationships/relations_{}.csv'.format(filename),index=False )
-        except: print('There are no relationships for '+ filename)
+        except: output_message('There are no relationships for ' + filename, "error")
         try:
             data = connectionobjectsrelationships
             data['join_path'] = data['name'] + '_' + data['destinationname']
@@ -311,19 +346,14 @@ def parse_tableau(filename):
             df_unpivoted.dropna(inplace=True)
             join_paths = df_unpivoted[['destinationname','path_values']] 
             join_paths.to_csv('./input/join_paths/path_{}.csv'.format(filename),index=False)
-        except: print('There are no join paths for '+ filename)        
+        except: output_message('There are no join paths for ' + filename, "error")        
         try: 
             formulas['filename']=filename
             formulas['fileid']= fileid
             formulas.to_csv('./input/formulas/formulas_{}.csv'.format(filename),index=False )
-        except: print('There are no formulas for '+ filename)
+        except: output_message('There are no formulas for ' + filename, "error")
 
-        try: 
-            vizes['filename']=filename
-            vizes['fileid']= fileid
-            vizes.to_csv('./input/vizes/vizes_{}.csv'.format(filename),index=False )
-        except: print('There are no vizes for '+ filename)
-        
+# Summary CSV output provided to list the various files that have been parsed        
         df = connectionstablesmetadata[["db_table","db","schema","connection","fileid"]].drop_duplicates()
         for index, row in df.iterrows():
             db_table = row['db_table']

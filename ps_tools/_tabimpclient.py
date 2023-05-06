@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import xmltodict, json
 import xml.etree.ElementTree as et
-#import tableauhyperio as hio
 import os
 import shutil
 from pathlib import Path
@@ -11,7 +10,9 @@ from thoughtspot_tml import Table
 import json
 import re
 from datetime import date
+#import tableauhyperio as hio
 
+# Functions Defined
 def connectiondetails(con):
     connectiondetails=con
     df1=pd.json_normalize(connectiondetails)
@@ -24,7 +25,6 @@ def connectiondetails(con):
     ,'connection.@class': 'class'
     ,'connection.@dbname': 'db'
     ,'@dbname': 'db'
-    #,'@server-ds-friendly-name':'db'
     ,'connection.@schema':'schema'           
     ,'@server': 'server'
     ,'connection.@server':'server'           
@@ -185,7 +185,6 @@ def metadetails(mtd):
     df = union_dfs.reindex(union_dfs.columns.union(cols, sort=False), axis=1, fill_value=" ")
     df['tableobject'] = df['tableobject'].str.strip('[]')
     metadata = df[["col_name", "db_column_name","column_type","aggregation","data_type","tableobject"]]
-    #metadata=metadata.dropna(subset=['tableobject'])
     #metadata.to_csv(os.path.join(tabfiledata,r'metadata.csv') )
     return metadata
 
@@ -234,7 +233,7 @@ def desttabledetails(destbl):
 def relationshipdetails(rel):
     relationshipdetails=rel
     try:
-        #run for simple join structures    
+        #for simple join structures    
         df = pd.json_normalize(relationshipdetails)
         df.rename(
             columns=({ 
@@ -257,7 +256,7 @@ def relationshipdetails(rel):
         return relationships
 
     except:
-        # run for complicated join structures
+        #for complicated join structures
         df = pd.json_normalize(relationshipdetails)
         df.rename(
             columns=({ 
@@ -299,7 +298,23 @@ def relationshipdetails(rel):
         return relationships
 
 def remap_expression(x):
-    operations = ['add_months', 'add_years', 'diff_months', 'date_trunc']
+    operations = [
+    'add_days',
+    'add_minutes',
+    'add_months',
+    'add_months',
+    'add_seconds',
+    'add_weeks',
+    'add_years',
+    'diff_days',
+    'diff_hours',
+    'diff_minutes',
+    'diff_months',
+    'diff_months',
+    'diff_quarters',
+    'diff_weeks',
+    'diff_years',
+    'date_trunc']
     for operation in operations:
         pattern = re.compile(r"\b" + operation + r"\(\s*(\d+)\s*,\s*(\[.*?\])\s*\)")
         x = re.sub(pattern, operation + r"(\2, \1)", x)
@@ -312,7 +327,7 @@ def apply_remap_expression(x):
 def formuladetails(fml):
     formuladetails=fml
     try:
-        df = pd.read_csv('config/Tab2TS_formulas.csv')
+        df = pd.read_csv('./config/Tab2TS_formulas.csv')
         mapping_df = df[["Tab_map","TS_map"]]
         validate_df = df[["Tab_map","Validate"]]
         df = pd.json_normalize(formuladetails)
@@ -335,7 +350,6 @@ def formuladetails(fml):
         df = df.reindex(df.columns.union(cols, sort=False), axis=1, fill_value=" ")
         df = df[["name", "datatype", "calcid", "role", "formula","tsyntax","dataitem","addinfo","validate"]]
         df=df.dropna(subset=['formula'])
-        df = df.loc[df['name'].isin(['!Orders!','AVG','IF AND ELSEIF','DATEADD','RUNNING_AVG','DATETRUNC','DATEDIFF','NESTED','NESTEDIF','NESTED_LOOKUP'])]
         df['validate'] = df['formula'].apply(lambda x: 'Yes' if any(val in x for val in mapping_df['Tab_map']) else 'No')
         for i, row in df.iterrows():
             formula = row['formula']

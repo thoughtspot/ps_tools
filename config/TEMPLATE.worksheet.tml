@@ -1,23 +1,23 @@
-guid: e0a4b682-6b87-46d7-aa74-a8be0519bc67
+guid: 
 worksheet:
-  name: Snowflake WS (Manual)
+  name: 
   tables:
-  - name: CUSTOMER
+  - name: 
   joins:
-  - name: CUSTOMER_to_NATION
-    source: CUSTOMER
-    destination: NATION
-    type: INNER
-    is_one_to_one: false
+  - name: 
+    source: 
+    destination: 
+    type: 
+    is_one_to_one: 
   table_paths:
-  - id: LINEITEM_1
-    table: LINEITEM
+  - id: 
+    table: 
     join_path:
     - join:
       - DEFAULT
   formulas:
-  - name: ABS
-    expr: "abs (1)"
+  - name: 
+    expr: 
     was_auto_generated: false
   worksheet_columns:
   - name: null

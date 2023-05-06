@@ -1,13 +1,83 @@
-guid: 1efa5142-e29b-6a80-a429-6f9941efedb9
+guid: f3cc5eb9-0165-3020-0f98-e2cc23270aa1
 table:
   name: LINEITEM
-  db: SNOWFLAKE_SAMPLE_DATA
-  schema: TPCH_SF1
+  db: NaN
+  schema: NaN
   db_table: LINEITEM
   connection:
     name: SF Trial
   columns:
   - properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: L_DISCOUNT
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: L_EXTENDEDPRICE
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: L_QUANTITY
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: L_TAX
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: L_COMMENT
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: L_LINESTATUS
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: L_RETURNFLAG
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: L_SHIPINSTRUCT
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: L_SHIPMODE
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: L_LINENUMBER
+    properties:
       column_type: ATTRIBUTE
       aggregation: SUM
       index_type: DONT_INDEX
@@ -34,84 +104,14 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: L_LINENUMBER
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: L_RETURNFLAG
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: L_LINESTATUS
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: L_SHIPINSTRUCT
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: L_SHIPMODE
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: L_COMMENT
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: L_QUANTITY
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: L_EXTENDEDPRICE
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: L_DISCOUNT
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: L_TAX
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
-  - db_column_name: L_SHIPDATE
-    properties:
-      column_type: ATTRIBUTE
-      aggregation: SUM
-      index_type: DONT_INDEX
-    db_column_properties:
-      data_type: VARCHAR
   - db_column_name: L_COMMITDATE
+    properties:
+      column_type: ATTRIBUTE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - db_column_name: L_RECEIPTDATE
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
@@ -122,10 +122,10 @@ table:
   - name: LINEITEM_PART
     destination:
       name: PART
-    "on": "[LINEITEM::L_PARTKEY] = [PART::P_PARTKEY]"
+    "on": "[LINEITEM::L_PARTKEY] = [PART (SNOWFLAKE_SAMPLE_DATA.PART)_1D2460E30A52486581CFDADD82FCB789::P_PARTKEY]"
     type: INNER
   - name: LINEITEM_SUPPLIER
     destination:
       name: SUPPLIER
-    "on": "[LINEITEM::L_SUPPKEY] = [SUPPLIER::S_SUPPKEY]"
+    "on": "[LINEITEM::L_SUPPKEY] = [SUPPLIER (SNOWFLAKE_SAMPLE_DATA.SUPPLIER)_CE83B5217CF24F6DB697964DC85F1FEC::S_SUPPKEY]"
     type: INNER

@@ -1,4 +1,4 @@
-guid: 963869c7-e839-4c05-c588-e185f3e29bf4
+guid: f62f879d-69f0-08ad-fc12-353cb52fd2f4
 table:
   name: LINEITEM
   db: SNOWFLAKE_SAMPLE_DATA

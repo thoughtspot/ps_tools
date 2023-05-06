@@ -1,8 +1,8 @@
-guid: 7344ce04-efae-b789-dc9a-1cdffdc3910d
+guid: d8b38033-8633-ff37-8f94-380dab953cbd
 table:
   name: PARTSUPP
-  db: SNOWFLAKE_SAMPLE_DATA
-  schema: TPCH_SF1
+  db: NaN
+  schema: NaN
   db_table: PARTSUPP
   connection:
     name: SF Trial
@@ -13,14 +13,14 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: PS_PARTKEY
+  - db_column_name: PS_SUPPLYCOST
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: PS_SUPPKEY
+  - db_column_name: PS_COMMENT
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM
@@ -34,7 +34,7 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
-  - db_column_name: PS_COMMENT
+  - db_column_name: PS_PARTKEY
     properties:
       column_type: ATTRIBUTE
       aggregation: SUM

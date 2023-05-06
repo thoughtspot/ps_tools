@@ -1,4 +1,4 @@
-guid: 6df58044-83b8-9066-84f2-2e561fb6c5cf
+guid: 90a2db36-95b8-3de0-c689-bbf23365a825
 table:
   name: REGION
   db: SNOWFLAKE_SAMPLE_DATA
